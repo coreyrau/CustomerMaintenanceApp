@@ -1,0 +1,64 @@
+﻿<Window x:Class="Assignment_4.Views.AddView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Assignment_4.Views"
+        mc:Ignorable="d"
+        x:Name="AddCustomer" Title="Add Customer" Height="311.766" Width="525"
+        DataContext="{Binding Add, Source={StaticResource Locator}}">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="Height" Value="25" />
+                <Setter Property="Margin" Value="10,10,0,0" />
+            </Style>
+            <Style TargetType="{x:Type Label}">
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="100" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="      Name:" />
+        <Label Grid.Row="1" Grid.Column="0" Content="      Address:" />
+        <Label Grid.Row="2" Grid.Column="0" Content="       City:" />
+        <Label Grid.Row="3" Grid.Column="0" Content="       State:" Grid.ColumnSpan="2" Margin="0,16.8,100.6,11.2" />
+        <Label Grid.Row="3" Grid.Column="3" Content="Zip Code:" Margin="28.6,16.8,-28.8,11.2" />
+
+        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="10.2,19.4,-86.8,9.6" 
+                 Text="{Binding Name}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="10.2,19.4,-86.8,9.6" 
+                 Text="{Binding Address}"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Margin="10.2,19.4,-86.8,9.6" 
+                 Text="{Binding City}"/>
+        <ComboBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Margin="10.2,17.8,77.2,11.2" 
+                 x:Name="StatesComboBox" ItemsSource="{Binding States}" SelectedItem ="{Binding SelectedState}" DisplayMemberPath="StateName"/>
+        <TextBox Grid.Row="3" Grid.Column="3" Margin="96.6,17.8,-86.8,11.2" 
+                 Text="{Binding Zipcode}"/>
+
+        <Button Name="AcceptButton" Grid.Row="4" Grid.Column="0" Content="Accept" Margin="28,18.4,83.6,10.4" Grid.ColumnSpan="2"
+                Command="{Binding AcceptCommand}" CommandParameter="{Binding ElementName=AddCustomer}"/>
+        <Button Name="CancelButton" Grid.Row="4" Grid.Column="3" Content="Cancel" Margin="97.6,18.8,-86.8,9.8"
+                Command="{Binding CancelCommand, Mode=OneWay}" CommandParameter="{Binding ElementName=AddCustomer}"/>
+
+
+
+
+
+
+
+    </Grid>
+</Window>
